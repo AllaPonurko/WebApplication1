@@ -5,4 +5,89 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div id="current_date_time_block"></div>
+
+    <script type="text/javascript">
+    /* функция добавления ведущих нулей */
+    /* (если число меньше десяти, перед числом добавляем ноль) */
+    function zero_first_format(value)
+    {
+        if (value < 10)
+        {
+            value='0'+value;
+        }
+        return value;
+    }
+
+    /* функция получения текущей даты и времени */
+    function date_time()
+    {
+        var current_datetime = new Date();
+        var day = zero_first_format(current_datetime.getDate());
+        var month = zero_first_format(current_datetime.getMonth()+1);
+        var year = current_datetime.getFullYear();
+        var hours = zero_first_format(current_datetime.getHours());
+        var minutes = zero_first_format(current_datetime.getMinutes());
+        var seconds = zero_first_format(current_datetime.getSeconds());
+
+        return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
+    }
+
+    /* выводим текущую дату и время на сайт в блок с id "current_date_time_block" */
+       /* document.getElementById('current_date_time_block').innerHTML = date_time();*/
+        setInterval(function () {
+            document.getElementById('current_date_time_block').innerHTML = date_time();
+        }, 1000);
+    </script>
+    <h3>Текущий день года</h3>
+    <div class="current_day_in_year" id="day"></div>
+        <script type="text/javascript">
+            function current_day()
+            {
+                var current_datetime = new Date();
+                var day = current_datetime.getDate();//день месяца
+                var month = current_datetime.getMonth();//количество полных месяцев
+                                                        //до текущей даты
+                switch (month) {
+                    case 0://январь
+                        return day;
+                        break;
+                    case 1://февраль
+                        return 31 + day;
+                        break;
+                    case 2://март
+                        return 59 + day;
+                        break;
+                    case 3://апрель
+                        return 90 + day;
+                        break;
+                    case 4://май
+                        return 120 + day;
+                        break;
+                    case 5://июнь
+                        return 151 + day;
+                        break;
+                    case 6://июль
+                        return 181 + day;
+                        break;
+                    case 7://август
+                        return 212 + day;
+                        break;
+                    case 8://сентябрь
+                        return 243 + day;
+                        break;
+                    case 9://октябрь
+                        return 273 + day;
+                        break;
+                    case 10://ноябрь
+                        return 304 + day;
+                        break;
+                    default:
+                        break;
+                }
+             }
+                document.getElementById('day').innerHTML = current_day();
+
+        </script>
+    
 </div>
