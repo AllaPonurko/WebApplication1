@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace WebApplication1.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        //public async Task About_me()
+        //{
+        //    Response.ContentType = "text/html;charset=utf-8";
+        //    await Response.WriteAsync("<h2>Hello , My name is TIME</h2>");
+        //}
+        public IActionResult About_me()
+        {
+            return View("About_me");
         }
     }
 }
